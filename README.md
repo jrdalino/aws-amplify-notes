@@ -1,4 +1,48 @@
 # aws-amplify-notes
+- https://aws.amazon.com/amplify/console/getting-started/?nc=sn&loc=3
+- https://github.com/aws-samples/create-react-app-auth-amplify
+- https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh
+- https://www.amplifyauth.dev/
+- https://github.com/dabit3/amplify-auth-demo
+
+## Getting Started (React)
+### Step 1: Intall Amplify CLI
+```
+$ npm install -g @aws-amplify/cli
+$ amplify configure
+```
+
+### Step 1: Create a new app
+```
+$ npx create-react-app rn-amplify
+$ cd rn-amplify
+$ npm install @aws-amplify
+$ npm start
+$ npm install aws-amplify-react
+```
+
+### Step 2: Set up your backend
+```
+$ npm install aws-amplify-react
+$ amplify status
+```
+
+### Step 3: Add API and Database
+```
+$ amplify add api
+$ amplify push
+```
+
+### Step 4: Integrate into your app
+```
+$ amplify console api
+```
+
+### Step 5: Launch your app
+```
+$ amplify add hosting
+$ amplify publish
+```
 
 ## References
 ### AWS Amplify https://aws.amazon.com/amplify/
