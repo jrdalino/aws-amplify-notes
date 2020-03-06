@@ -6,34 +6,115 @@
 - https://github.com/dabit3/amplify-auth-demo
 
 ## Getting Started (React)
-### Step 1: Intall Amplify CLI
+### Step 1: Install Amplify CLI
 ```
 $ npm install -g @aws-amplify/cli
 $ amplify configure
 ```
 
-### Step 1: Create a new app
+### Step 2: Create a new app and install Amplify
 ```
-$ npx create-react-app rn-amplify
-$ cd rn-amplify
+$ npx create-react-app myapp
+$ cd myapp
 $ npm install @aws-amplify
 $ npm start
 $ npm install aws-amplify-react
 ```
 
-### Step 2: Set up your backend
+### Step 3: Set up your backend and verify
 ```
-$ npm install aws-amplify-react
+$ amplify init
 $ amplify status
 ```
 
-### Step 3: Add API and Database
+### Step 4: Add API and Database
 ```
 $ amplify add api
 $ amplify push
 ```
 
-### Step 4: Integrate into your app
+### Step 5: Integrate into your app. Update src/App.js
+- configure library with Amplify.configure
+- add data to your database with a mutation by using API.graphql():
+- list all the items in the database by importing listTodos and then using Hooks to update the page when a query runs on app start by adding initial state and a reducer function as well as modifying your App function:
+- import the onCreateTodo subscription and create a new subscription by adding subscription with API.graphql()
+```
+import React, { useEffect, useReducer } from 'react';
+
+import API, { graphqlOperation } from '@aws-amplify/api';
+import PubSub from '@aws-amplify/pubsub';
+
+import { createTodo } from './graphql/mutations';
+import { listTodos } from './graphql/queries';
+import { onCreateTodo } from './graphql/subscriptions';
+
+import awsconfig from './aws-exports';
+import './App.css';
+
+API.configure(awsconfig);
+PubSub.configure(awsconfig);
+
+// Action Types
+const QUERY = 'QUERY';
+const SUBSCRIPTION = 'SUBSCRIPTION';
+
+const initialState = {
+  todos: [],
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case QUERY:
+      return {...state, todos: action.todos};
+    case SUBSCRIPTION:
+      return {...state, todos:[...state.todos, action.todo]}
+    default:
+      return state;
+  }
+};
+
+async function createNewTodo() {
+  const todo = { name: "Use AWS AppSync", description: "RealTime and Offline" };
+  await API.graphql(graphqlOperation(createTodo, { input: todo }));
+}
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    async function getData() {
+      const todoData = await API.graphql(graphqlOperation(listTodos));
+      dispatch({ type: QUERY, todos: todoData.data.listTodos.items });
+    }
+    getData();
+
+    const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
+      next: (eventData) => {
+        const todo = eventData.value.data.onCreateTodo;
+        dispatch({ type: SUBSCRIPTION, todo });
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  return (
+    <div className="App">
+      <button onClick={createNewTodo}>Add Todo</button>
+      <div>
+        {state.todos.length > 0 ? 
+          state.todos.map((todo) => <p key={todo.id}>{todo.name} : {todo.description}</p>) :
+          <p>Add some todos!</p> 
+        }
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+###
 ```
 $ amplify console api
 ```
