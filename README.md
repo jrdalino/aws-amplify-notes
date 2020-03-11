@@ -4,6 +4,8 @@
 - https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh
 - https://www.amplifyauth.dev/
 - https://github.com/dabit3/amplify-auth-demo
+- https://github.com/dabit3/aws-amplify-workshop-react
+- https://github.com/dabit3/awesome-aws-amplify
 
 ## Getting Started (React)
 ### Step 1: Install Amplify CLI
