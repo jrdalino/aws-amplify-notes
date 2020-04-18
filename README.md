@@ -227,17 +227,101 @@ export default withAuthenticator(App, true);
 $ yarn start
 ```
 
-
 ## Step 3: Add Hosting
 ```
 $ amplify add hosting (DEV)
+? Select the environment setup: DEV (S3 only with HTTP)
+? hosting bucket name myapp-20200418181729-hostingbucket
+? index doc for the website index.html
+? error doc for the website index.html
+
+You can now publish your app using the following command:
+Command: amplify publish
+```
+```
 $ amplify status
-$ amplify update hosting (PROD) 
+
+Current Environment: dev
+
+| Category | Resource name   | Operation | Provider plugin   |
+| -------- | --------------- | --------- | ----------------- |
+| Hosting  | S3AndCloudFront | Create    | awscloudformation |
+| Auth     | myapp237c3585   | No Change | awscloudformation |
 ```
 
 ##  Step 4: Publish
 ```
 $ amplify publish
+✔ Successfully pulled backend environment dev from the cloud.
+
+Current Environment: dev
+
+| Category | Resource name   | Operation | Provider plugin   |
+| -------- | --------------- | --------- | ----------------- |
+| Hosting  | S3AndCloudFront | Create    | awscloudformation |
+| Auth     | myapp237c3585   | No Change | awscloudformation |
+? Are you sure you want to continue? Yes
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+UPDATE_COMPLETE    authmyapp237c3585        AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:19 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS hostingS3AndCloudFront   AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:18 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+UPDATE_IN_PROGRESS authmyapp237c3585        AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:17 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS hostingS3AndCloudFront   AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:16 GMT+0800 (Singapore Standard Time)                            
+UPDATE_IN_PROGRESS amplify-myapp-dev-174556 AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:12 GMT+0800 (Singapore Standard Time) User Initiated             
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS S3Bucket                                                      AWS::S3::Bucket            Sat Apr 18 2020 18:19:23 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS S3Bucket                                                      AWS::S3::Bucket            Sat Apr 18 2020 18:19:21 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS amplify-myapp-dev-174556-hostingS3AndCloudFront-1N7Y6C8X6TKAM AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:18 GMT+0800 (Singapore Standard Time) User Initiated             
+⠧ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE S3Bucket AWS::S3::Bucket Sat Apr 18 2020 18:19:45 GMT+0800 (Singapore Standard Time) 
+⠦ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE amplify-myapp-dev-174556-hostingS3AndCloudFront-1N7Y6C8X6TKAM AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:47 GMT+0800 (Singapore Standard Time) 
+⠇ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE hostingS3AndCloudFront AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:52 GMT+0800 (Singapore Standard Time) 
+⠹ Updating resources in the cloud. This may take a few minutes...
+
+UPDATE_COMPLETE                     amplify-myapp-dev-174556 AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:57 GMT+0800 (Singapore Standard Time) 
+UPDATE_COMPLETE                     authmyapp237c3585        AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:56 GMT+0800 (Singapore Standard Time) 
+UPDATE_COMPLETE_CLEANUP_IN_PROGRESS amplify-myapp-dev-174556 AWS::CloudFormation::Stack Sat Apr 18 2020 18:19:55 GMT+0800 (Singapore Standard Time) 
+✔ All resources are updated in the cloud
+
+Hosting endpoint: http://myapp-20200418181729-hostingbucket-dev.s3-website-ap-southeast-2.amazonaws.com
+
+yarn run v1.22.4
+$ react-scripts build
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  131.83 KB  build/static/js/2.d552c88d.chunk.js
+  3.63 KB    build/static/css/2.44a8782a.chunk.css
+  920 B      build/static/js/main.c477d63f.chunk.js
+  767 B      build/static/js/runtime-main.b1cc144f.js
+  547 B      build/static/css/main.5f361e03.chunk.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  bit.ly/CRA-deploy
+
+✨  Done in 40.71s.
+frontend build command exited with code 0
+✔ Uploaded files successfully.
+Your app is published successfully.
+http://myapp-20200418181729-hostingbucket-dev.s3-website-ap-southeast-2.amazonaws.com
 ```
 
 ## References
