@@ -1,11 +1,5 @@
 # aws-amplify-notes
-- https://aws.amazon.com/amplify/console/getting-started/?nc=sn&loc=3
-- https://github.com/aws-samples/create-react-app-auth-amplify
-- https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh
-- https://www.amplifyauth.dev/
-- https://github.com/dabit3/amplify-auth-demo
-- https://github.com/dabit3/aws-amplify-workshop-react
-- https://github.com/dabit3/awesome-aws-amplify
+
 
 ## Getting Started (React)
 ### Step 1: Install Amplify CLI
@@ -147,4 +141,12 @@ $ amplify publish
 #### Docs (JavaScript): https://aws-amplify.github.io/docs/js/start?platform=purejs
 #### API (JavaScript): https://aws-amplify.github.io/amplify-js/api/
 #### Community: https://amplify.aws/community/
+
+- https://aws.amazon.com/amplify/console/getting-started/?nc=sn&loc=3
+- https://github.com/aws-samples/create-react-app-auth-amplify
+- https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh
+- https://www.amplifyauth.dev/
+- https://github.com/dabit3/amplify-auth-demo
+- https://github.com/dabit3/aws-amplify-workshop-react
+- https://github.com/dabit3/awesome-aws-amplify
 
