@@ -324,7 +324,64 @@ Your app is published successfully.
 http://myapp-20200418181729-hostingbucket-dev.s3-website-ap-southeast-2.amazonaws.com
 ```
 
+## Cleanup
+```
+$ amplify remove hosting
+$ amplify remove auth
+$ amplify push
+$ amplify delete
+```
+
 ## References
 - React Getting Started: https://aws-amplify.github.io/docs/js/react
 - Authentication Getting Started: https://docs.amplify.aws/lib/auth/getting-started?platform=js
 - Authentication: https://aws-amplify.github.io/docs/js/authentication
+
+## Appendix: Adding Amplify Manually
+- Step 1: Installation: Install Amplify CLI
+```
+$ npx create-react-app myapp2 && cd myapp2
+```
+- Step 2: Add Amplify and Amplify-React libraries to the ReactJS App
+```
+$ yarn add aws-amplify aws-amplify-react
+```
+- Step 3: Manually add /src/aws-exports
+```
+const awsmobile = {
+    "aws_project_region": "ap-southeast-2"
+};
+export default awsmobile;
+```
+- Step 4: Edit ./src/App.js
+```
+...
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react';
+import '@aws-amplify/ui/dist/style.css';
+Amplify.configure(awsconfig);
+...
+export default withAuthenticator(App, true);
+```
+- Step 5: Test
+```
+$ yarn start
+```
+- Step 6: Re-use existing authentication resource as in https://docs.amplify.aws/lib/auth/start?platform=js#configure-your-application > Scroll to "Re-use existing authentication resource"
+```
+import Amplify, { Auth } from 'aws-amplify';
+Amplify.configure({
+    Auth: {
+        // REQUIRED - Amazon Cognito Region
+        region: 'ap-southeast-2',
+        // OPTIONAL - Amazon Cognito User Pool ID
+        userPoolId: ' ap-southeast-2_XGQmb0fKL',
+        // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+        userPoolWebClientId: '4imdhssvgm0s0h3em31brm14p2',
+    }
+});
+// You can get the current config object
+const currentConfig = Auth.configure();
+```
+- Step 7: Copy Sign Up, Sign in & Sign out code from https://docs.amplify.aws/lib/auth/emailpassword?platform=js
