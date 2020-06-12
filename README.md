@@ -6,6 +6,33 @@ $ npm install -g @aws-amplify/cli
 $ amplify configure
 ```
 
+```
+jrdalino@MacBook-Pro environment % amplify configure
+Scanning for plugins...
+Plugin scan successful
+Follow these steps to set up access to your AWS account:
+
+Sign in to your AWS administrator account:
+https://console.aws.amazon.com/
+Press Enter to continue
+
+Specify the AWS Region
+? region:  ap-southeast-1
+Specify the username of the new IAM user:
+? user name:  jrdalino-amplify
+Complete the user creation using the AWS console
+https://console.aws.amazon.com/iam/home?region=undefined#/users$new?step=final&accessKey&userNames=jrdalino-amplify&permissionType=policies&policies=arn:aws:iam::aws:policy%2FAdministratorAccess
+Press Enter to continue
+
+Enter the access key of the newly created user:
+? accessKeyId: ******
+? secretAccessKey: ******
+This would update/create the AWS Profile in your local machine
+? Profile Name:  amplify
+
+Successfully set up the new user.
+```
+
 ## Step 1: Create a new app, initialize and install Amplify. The following resources will be created
 - Amplify Project: myapp
 - Cloudformation Stack: amplify-myapp-dev-174556
