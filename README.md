@@ -7,7 +7,7 @@ $ amplify configure
 ```
 
 ```
-jrdalino@MacBook-Pro environment % amplify configure
+$ environment % amplify configure
 Scanning for plugins...
 Plugin scan successful
 Follow these steps to set up access to your AWS account:
