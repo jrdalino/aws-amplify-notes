@@ -22,7 +22,7 @@ Faster App Dev of mobile or web MVP’s through:
 - Supports Multi-cloud
 - https://www.serverless.com/framework/docs/providers/aws/guide/intro
 
-## Installation: Install Amplify CLI
+## Install Amplify CLI
 ```
 $ npm install -g @aws-amplify/cli
 $ amplify configure
@@ -50,8 +50,8 @@ This would update/create the AWS Profile in your local machine
 
 Successfully set up the new user.
 ```
-
-## Step 1: Create a new react app
+## Demo
+### Step 1: Create a new react app
 ```
 $ npx create-react-app myapp && cd myapp
 Success! Created myapp at /Users/jrdalino/environment/myapp
@@ -76,7 +76,7 @@ We suggest that you begin by typing:
   yarn start
 ```
 
-## Step 2: Initialize AWS Amplify. This will create the following resources:
+### Step 2: Initialize AWS Amplify. This will create the following resources:
 - Amplify Project: myapp
 - Cloudformation Stack: amplify-myapp-dev-174556
 - S3 Bucket: amplify-myapp-dev-174556-deployment
@@ -143,7 +143,7 @@ Pro tip:
 Try "amplify add api" to create a backend API and then "amplify publish" to deploy everything
 ```
 
-## Step 3: Add Auth, provision auth resources in the cloud
+### Step 3: Add Auth, provision auth resources in the cloud
 ```
 $ amplify add auth
 Using service: Cognito, provided by: awscloudformation
@@ -161,7 +161,7 @@ Some next steps:
 "amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
 ```
 
-## Step 4: Push local backend resources to the cloud
+### Step 4: Push local backend resources to the cloud
 ```
 $ amplify push
 ✔ Successfully pulled backend environment dev from the cloud.
@@ -277,12 +277,12 @@ CREATE_IN_PROGRESS                  UpdateRolesWithIDPFunctionOutputs Custom::La
 ✔ All resources are updated in the cloud
 ```
 
-## Step 5: Add Amplify and Amplify-React libraries to the ReactJS App
+### Step 5: Add Amplify and Amplify-React libraries to the ReactJS App
 ```
 $ yarn add aws-amplify aws-amplify-react
 ```
 
-## Step 6: Edit ./src/App.js
+### Step 6: Edit ./src/App.js
 ```
 ...
 import Amplify from 'aws-amplify';
@@ -296,12 +296,12 @@ Amplify.configure(awsconfig);
 export default withAuthenticator(App, true);
 ```
 
-## Step 7: Test
+### Step 7: Test
 ```
 $ yarn start
 ```
 
-## Step 8: Add Hosting
+### Step 8: Add Hosting
 ```
 $ amplify add hosting
 ? Select the plugin module to execute Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
@@ -312,7 +312,7 @@ You can now publish your app using the following command:
 Command: amplify publish
 ```
 
-## Step 9: Run Amplify Status
+### Step 9: Run Amplify Status
 ```
 $ amplify status
 
@@ -327,7 +327,7 @@ Current Environment: dev
 No amplify console domain detected
 ```
 
-##  Step 10: Run Amplify Publish
+### Step 10: Run Amplify Publish
 ```
 $ amplify publish
 ✔ Successfully pulled backend environment dev from the cloud.
@@ -403,7 +403,7 @@ Find out more about deployment here:
 https://dev.d2ceyb8rq1u3g.amplifyapp.com
 ```
 
-## Cleanup
+### (Optional) Cleanup
 ```
 $ amplify remove hosting
 $ amplify remove auth
