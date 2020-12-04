@@ -22,9 +22,11 @@ Faster App Dev of mobile or web MVP’s through:
 - Supports Multi-cloud
 - https://www.serverless.com/framework/docs/providers/aws/guide/intro
 
-## Install Amplify CLI
+## Prerequisites
+- Install Amplify CLI and Configure
 ```
 $ npm install -g @aws-amplify/cli
+$ amplify configure --usage-data-off
 $ amplify configure
 Scanning for plugins...
 Plugin scan successful
@@ -53,8 +55,9 @@ Successfully set up the new user.
 ## Demo
 ### Step 1: Create a new react app
 ```
-$ npx create-react-app myapp && cd myapp
-Success! Created myapp at /Users/jrdalino/environment/myapp
+$ npx create-react-app myproject-amplify-demo && cd myproject-amplify-demo
+...
+Success! Created myproject-amplify-demo at /Users/jrdalino/environment/myproject-amplify-demo
 Inside that directory, you can run several commands:
 
   yarn start
@@ -72,22 +75,18 @@ Inside that directory, you can run several commands:
 
 We suggest that you begin by typing:
 
-  cd myapp
+  cd myproject-amplify-demo
   yarn start
+
+Happy hacking!
 ```
 
-### Step 2: Initialize AWS Amplify. This will create the following resources:
-- Amplify Project: myapp
-- Cloudformation Stack: amplify-myapp-dev-174556
-- S3 Bucket: amplify-myapp-dev-174556-deployment
-- IAM Role: amplify-myapp-dev-174556-authRole
-- IAM Role: amplify-myapp-dev-174556-unauthRole
+### Step 2: Initialize AWS Amplify. 
+- Run this command
 ```
 $ amplify init
-Scanning for plugins...
-Plugin scan successful
 Note: It is recommended to run this command from the root of your app directory
-? Enter a name for the project myapp
+? Enter a name for the project myprojectamplifydemo
 ? Enter a name for the environment dev
 ? Choose your default editor: Visual Studio Code
 ? Choose the type of app that you're building javascript
@@ -99,33 +98,34 @@ Please tell us about your project
 ? Start Command: yarn start
 Using default provider  awscloudformation
 
+
 For more information on AWS Profiles, see:
-https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 
 ? Do you want to use an AWS profile? Yes
 ? Please choose the profile you want to use amplify
-Adding backend environment dev to AWS Amplify Console app: d2ceyb8rq1u3g
+Adding backend environment dev to AWS Amplify Console app: d3k4wgamyjs0uh
 ⠴ Initializing project in the cloud...
 
-CREATE_IN_PROGRESS UnauthRole               AWS::IAM::Role             Fri Jun 19 2020 13:32:21 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS AuthRole                 AWS::IAM::Role             Fri Jun 19 2020 13:32:21 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS AuthRole                 AWS::IAM::Role             Fri Jun 19 2020 13:32:20 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS UnauthRole               AWS::IAM::Role             Fri Jun 19 2020 13:32:20 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS DeploymentBucket         AWS::S3::Bucket            Fri Jun 19 2020 13:32:20 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS amplify-myapp-dev-133155 AWS::CloudFormation::Stack Fri Jun 19 2020 13:32:16 GMT+0800 (Singapore Standard Time) User Initiated             
-⠹ Initializing project in the cloud...
+CREATE_IN_PROGRESS AuthRole                                AWS::IAM::Role             Fri Dec 04 2020 17:24:25 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UnauthRole                              AWS::IAM::Role             Fri Dec 04 2020 17:24:25 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UnauthRole                              AWS::IAM::Role             Fri Dec 04 2020 17:24:24 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS AuthRole                                AWS::IAM::Role             Fri Dec 04 2020 17:24:24 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS DeploymentBucket                        AWS::S3::Bucket            Fri Dec 04 2020 17:24:23 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS amplify-myprojectamplifydemo-dev-172354 AWS::CloudFormation::Stack Fri Dec 04 2020 17:24:19 GMT+0800 (Singapore Standard Time) User Initiated             
+⠼ Initializing project in the cloud...
 
-CREATE_IN_PROGRESS DeploymentBucket AWS::S3::Bucket Fri Jun 19 2020 13:32:23 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS DeploymentBucket AWS::S3::Bucket Fri Dec 04 2020 17:24:25 GMT+0800 (Singapore Standard Time) Resource creation Initiated
 ⠦ Initializing project in the cloud...
 
-CREATE_COMPLETE UnauthRole AWS::IAM::Role Fri Jun 19 2020 13:32:39 GMT+0800 (Singapore Standard Time) 
-CREATE_COMPLETE AuthRole   AWS::IAM::Role Fri Jun 19 2020 13:32:39 GMT+0800 (Singapore Standard Time) 
-⠋ Initializing project in the cloud...
+CREATE_COMPLETE UnauthRole AWS::IAM::Role Fri Dec 04 2020 17:24:45 GMT+0800 (Singapore Standard Time) 
+⠇ Initializing project in the cloud...
 
-CREATE_COMPLETE DeploymentBucket AWS::S3::Bucket Fri Jun 19 2020 13:32:44 GMT+0800 (Singapore Standard Time) 
-⠏ Initializing project in the cloud...
+CREATE_COMPLETE AuthRole AWS::IAM::Role Fri Dec 04 2020 17:24:45 GMT+0800 (Singapore Standard Time) 
+⠇ Initializing project in the cloud...
 
-CREATE_COMPLETE amplify-myapp-dev-133155 AWS::CloudFormation::Stack Fri Jun 19 2020 13:32:47 GMT+0800 (Singapore Standard Time) 
+CREATE_COMPLETE amplify-myprojectamplifydemo-dev-172354 AWS::CloudFormation::Stack Fri Dec 04 2020 17:24:49 GMT+0800 (Singapore Standard Time) 
+CREATE_COMPLETE DeploymentBucket                        AWS::S3::Bucket            Fri Dec 04 2020 17:24:46 GMT+0800 (Singapore Standard Time) 
 ✔ Successfully created initial AWS cloud resources for deployments.
 ✔ Initialized provider successfully.
 Initialized your environment successfully.
@@ -141,6 +141,38 @@ Some next steps:
 
 Pro tip:
 Try "amplify add api" to create a backend API and then "amplify publish" to deploy everything
+```
+- This will create the following AWS Resources:
+```
+- Amplify Project: myprojectamplifydemo
+- Cloudformation Stack: amplify-myprojectamplifydemo-dev-172354
+- S3 Bucket: amplify-myprojectamplifydemo-dev-172354-deployment
+- IAM Role: amplify-myprojectamplifydemo-dev-172354-authRole
+- IAM Role: amplify-myprojectamplifydemo-dev-172354-unauthRole
+```
+- This create the following resources
+```
+$ pwd
+/Users/jrdalino/environment/myproject-amplify-demo/amplify
+$ ls
+#current-cloud-backend	backend			cli.json		team-provider-info.json
+$ pwd
+/Users/jrdalino/environment/myproject-amplify-demo/src
+$ cat aws-exports.js 
+/* eslint-disable */
+// WARNING: DO NOT EDIT. This file is automatically generated by AWS Amplify. It will be overwritten.
+
+const awsmobile = {
+    "aws_project_region": "ap-southeast-1"
+};
+$ cat .gitignore
+...
+
+#amplify
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/mock-data
+...
 ```
 
 ### Step 3: Add Auth, provision auth resources in the cloud
