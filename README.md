@@ -177,7 +177,7 @@ amplify/mock-data
 
 ### Step 3: Add Auth, provision auth resources in the cloud
 ```
-$ amplify add auth
+$ amplify add auth    
 Using service: Cognito, provided by: awscloudformation
  
  The current configured provider is Amazon Cognito. 
@@ -186,7 +186,7 @@ Using service: Cognito, provided by: awscloudformation
  Warning: you will not be able to edit these selections. 
  How do you want users to be able to sign in? Email
  Do you want to configure advanced settings? No, I am done.
-Successfully added resource myapp237c3585 locally
+Successfully added auth resource myprojectamplifydemo5a4834e7 locally
 
 Some next steps:
 "amplify push" will build all your local backend resources and provision it in the cloud
@@ -195,117 +195,127 @@ Some next steps:
 
 ### Step 4: Push local backend resources to the cloud
 ```
-$ amplify push
+$ amplify push 
 ✔ Successfully pulled backend environment dev from the cloud.
 
 Current Environment: dev
 
-| Category | Resource name | Operation | Provider plugin   |
-| -------- | ------------- | --------- | ----------------- |
-| Auth     | myapp9099242c | Create    | awscloudformation |
+| Category | Resource name                | Operation | Provider plugin   |
+| -------- | ---------------------------- | --------- | ----------------- |
+| Auth     | myprojectamplifydemo5a4834e7 | Create    | awscloudformation |
 ? Are you sure you want to continue? Yes
-⠇ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS authmyapp9099242c              AWS::CloudFormation::Stack Fri Jun 19 2020 13:53:05 GMT+0800 (Singapore Standard Time)               
-CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionRole AWS::IAM::Role             Fri Jun 19 2020 13:53:05 GMT+0800 (Singapore Standard Time)               
-UPDATE_IN_PROGRESS amplify-myapp-dev-133155       AWS::CloudFormation::Stack Fri Jun 19 2020 13:53:00 GMT+0800 (Singapore Standard Time) User Initiated
 ⠸ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS authmyapp9099242c              AWS::CloudFormation::Stack Fri Jun 19 2020 13:53:07 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionRole AWS::IAM::Role             Fri Jun 19 2020 13:53:06 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+UPDATE_IN_PROGRESS DeploymentBucket                        AWS::S3::Bucket            Mon Dec 07 2020 14:42:55 GMT+0800 (Singapore Standard Time)               
+UPDATE_IN_PROGRESS UnauthRole                              AWS::IAM::Role             Mon Dec 07 2020 14:42:55 GMT+0800 (Singapore Standard Time)               
+UPDATE_IN_PROGRESS AuthRole                                AWS::IAM::Role             Mon Dec 07 2020 14:42:54 GMT+0800 (Singapore Standard Time)               
+UPDATE_IN_PROGRESS amplify-myprojectamplifydemo-dev-172354 AWS::CloudFormation::Stack Mon Dec 07 2020 14:42:50 GMT+0800 (Singapore Standard Time) User Initiated
+⠴ Updating resources in the cloud. This may take a few minutes...
+
+UPDATE_COMPLETE UnauthRole AWS::IAM::Role Mon Dec 07 2020 14:43:13 GMT+0800 (Singapore Standard Time) 
+UPDATE_COMPLETE AuthRole   AWS::IAM::Role Mon Dec 07 2020 14:43:13 GMT+0800 (Singapore Standard Time) 
+⠧ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS authmyprojectamplifydemo5a4834e7 AWS::CloudFormation::Stack Mon Dec 07 2020 14:43:18 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionRole   AWS::IAM::Role             Mon Dec 07 2020 14:43:17 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS authmyprojectamplifydemo5a4834e7 AWS::CloudFormation::Stack Mon Dec 07 2020 14:43:17 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionRole   AWS::IAM::Role             Mon Dec 07 2020 14:43:16 GMT+0800 (Singapore Standard Time)                            
+UPDATE_COMPLETE    DeploymentBucket                 AWS::S3::Bucket            Mon Dec 07 2020 14:43:15 GMT+0800 (Singapore Standard Time)                            
 ⠏ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS amplify-myapp-dev-133155-authmyapp9099242c-4SAP2CL40I8D AWS::CloudFormation::Stack Fri Jun 19 2020 13:53:07 GMT+0800 (Singapore Standard Time) User Initiated
+CREATE_IN_PROGRESS amplify-myprojectamplifydemo-dev-172354-authmyprojectamplifydemo5a4834e7-Y8FLQDMPUIO8 AWS::CloudFormation::Stack Mon Dec 07 2020 14:43:17 GMT+0800 (Singapore Standard Time) User Initiated
+⠧ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS SNSRole AWS::IAM::Role Mon Dec 07 2020 14:43:25 GMT+0800 (Singapore Standard Time) 
+⠧ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS SNSRole AWS::IAM::Role Mon Dec 07 2020 14:43:26 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+⠦ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE UpdateRolesWithIDPFunctionRole AWS::IAM::Role Mon Dec 07 2020 14:43:38 GMT+0800 (Singapore Standard Time) 
+⠏ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE SNSRole AWS::IAM::Role Mon Dec 07 2020 14:43:46 GMT+0800 (Singapore Standard Time) 
 ⠹ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS SNSRole AWS::IAM::Role Fri Jun 19 2020 13:53:14 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS SNSRole AWS::IAM::Role Fri Jun 19 2020 13:53:13 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPool AWS::Cognito::UserPool Mon Dec 07 2020 14:43:50 GMT+0800 (Singapore Standard Time) 
 ⠋ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_COMPLETE UpdateRolesWithIDPFunctionRole AWS::IAM::Role Fri Jun 19 2020 13:53:25 GMT+0800 (Singapore Standard Time) 
-⠹ Updating resources in the cloud. This may take a few minutes...
+CREATE_COMPLETE    UserPool AWS::Cognito::UserPool Mon Dec 07 2020 14:43:53 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPool AWS::Cognito::UserPool Mon Dec 07 2020 14:43:52 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+⠏ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_COMPLETE SNSRole AWS::IAM::Role Fri Jun 19 2020 13:53:33 GMT+0800 (Singapore Standard Time) 
+CREATE_COMPLETE    UserPoolClient    AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:58 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPoolClient    AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:58 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_COMPLETE    UserPoolClientWeb AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:58 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPoolClientWeb AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:58 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UserPoolClient    AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:56 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPoolClientWeb AWS::Cognito::UserPoolClient Mon Dec 07 2020 14:43:56 GMT+0800 (Singapore Standard Time)                            
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UserPoolClientRole AWS::IAM::Role Mon Dec 07 2020 14:44:02 GMT+0800 (Singapore Standard Time) 
 ⠸ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS UserPool AWS::Cognito::UserPool Fri Jun 19 2020 13:53:38 GMT+0800 (Singapore Standard Time) 
+CREATE_IN_PROGRESS UserPoolClientRole AWS::IAM::Role Mon Dec 07 2020 14:44:03 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+⠸ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE UserPoolClientRole AWS::IAM::Role Mon Dec 07 2020 14:44:22 GMT+0800 (Singapore Standard Time) 
+⠴ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    UserPoolClientLambda AWS::Lambda::Function Mon Dec 07 2020 14:44:28 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPoolClientLambda AWS::Lambda::Function Mon Dec 07 2020 14:44:27 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UserPoolClientLambda AWS::Lambda::Function Mon Dec 07 2020 14:44:27 GMT+0800 (Singapore Standard Time)                            
+⠴ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UserPoolClientLambdaPolicy AWS::IAM::Policy Mon Dec 07 2020 14:44:33 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UserPoolClientLambdaPolicy AWS::IAM::Policy Mon Dec 07 2020 14:44:31 GMT+0800 (Singapore Standard Time)                            
+⠦ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UserPoolClientLogPolicy    AWS::IAM::Policy Mon Dec 07 2020 14:44:54 GMT+0800 (Singapore Standard Time) 
+CREATE_COMPLETE    UserPoolClientLambdaPolicy AWS::IAM::Policy Mon Dec 07 2020 14:44:51 GMT+0800 (Singapore Standard Time) 
+⠧ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UserPoolClientLogPolicy AWS::IAM::Policy Mon Dec 07 2020 14:44:57 GMT+0800 (Singapore Standard Time) Resource creation Initiated
 ⠇ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS UserPool AWS::Cognito::UserPool Fri Jun 19 2020 13:53:41 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_COMPLETE UserPoolClientLogPolicy AWS::IAM::Policy Mon Dec 07 2020 14:45:15 GMT+0800 (Singapore Standard Time) 
+⠏ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UserPoolClientInputs Custom::LambdaCallout Mon Dec 07 2020 14:45:18 GMT+0800 (Singapore Standard Time) 
+⠋ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    UserPoolClientInputs Custom::LambdaCallout Mon Dec 07 2020 14:45:22 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UserPoolClientInputs Custom::LambdaCallout Mon Dec 07 2020 14:45:22 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    IdentityPool AWS::Cognito::IdentityPool Mon Dec 07 2020 14:45:29 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS IdentityPool AWS::Cognito::IdentityPool Mon Dec 07 2020 14:45:28 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS IdentityPool AWS::Cognito::IdentityPool Mon Dec 07 2020 14:45:26 GMT+0800 (Singapore Standard Time)                            
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    IdentityPoolRoleMap AWS::Cognito::IdentityPoolRoleAttachment Mon Dec 07 2020 14:45:34 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS IdentityPoolRoleMap AWS::Cognito::IdentityPoolRoleAttachment Mon Dec 07 2020 14:45:34 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS IdentityPoolRoleMap AWS::Cognito::IdentityPoolRoleAttachment Mon Dec 07 2020 14:45:32 GMT+0800 (Singapore Standard Time)                            
+⠙ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE amplify-myprojectamplifydemo-dev-172354-authmyprojectamplifydemo5a4834e7-Y8FLQDMPUIO8 AWS::CloudFormation::Stack Mon Dec 07 2020 14:45:37 GMT+0800 (Singapore Standard Time) 
+⠹ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    UpdateRolesWithIDPFunction       AWS::Lambda::Function      Mon Dec 07 2020 14:46:00 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunction       AWS::Lambda::Function      Mon Dec 07 2020 14:45:59 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunction       AWS::Lambda::Function      Mon Dec 07 2020 14:45:59 GMT+0800 (Singapore Standard Time)                            
+CREATE_COMPLETE    authmyprojectamplifydemo5a4834e7 AWS::CloudFormation::Stack Mon Dec 07 2020 14:45:56 GMT+0800 (Singapore Standard Time)                            
+⠸ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout Mon Dec 07 2020 14:46:02 GMT+0800 (Singapore Standard Time) 
+⠸ Updating resources in the cloud. This may take a few minutes...
+
+CREATE_COMPLETE    UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout Mon Dec 07 2020 14:46:07 GMT+0800 (Singapore Standard Time)                            
+CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout Mon Dec 07 2020 14:46:07 GMT+0800 (Singapore Standard Time) Resource creation Initiated
 ⠼ Updating resources in the cloud. This may take a few minutes...
 
-CREATE_IN_PROGRESS UserPoolClientWeb AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:45 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClient    AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:44 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS UserPoolClientWeb AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:44 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE    UserPool          AWS::Cognito::UserPool       Fri Jun 19 2020 13:53:41 GMT+0800 (Singapore Standard Time)                            
-⠇ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientWeb AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:45 GMT+0800 (Singapore Standard Time) 
-⠴ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UserPoolClientRole AWS::IAM::Role               Fri Jun 19 2020 13:53:50 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClientRole AWS::IAM::Role               Fri Jun 19 2020 13:53:49 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE    UserPoolClient     AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:46 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS UserPoolClient     AWS::Cognito::UserPoolClient Fri Jun 19 2020 13:53:46 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-⠴ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientRole AWS::IAM::Role Fri Jun 19 2020 13:54:10 GMT+0800 (Singapore Standard Time) 
-⠦ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UserPoolClientLambda AWS::Lambda::Function Fri Jun 19 2020 13:54:15 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClientLambda AWS::Lambda::Function Fri Jun 19 2020 13:54:14 GMT+0800 (Singapore Standard Time)                            
-⠋ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientLambda AWS::Lambda::Function Fri Jun 19 2020 13:54:15 GMT+0800 (Singapore Standard Time) 
-⠦ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UserPoolClientLambdaPolicy AWS::IAM::Policy Fri Jun 19 2020 13:54:20 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClientLambdaPolicy AWS::IAM::Policy Fri Jun 19 2020 13:54:19 GMT+0800 (Singapore Standard Time)                            
-⠧ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientLambdaPolicy AWS::IAM::Policy Fri Jun 19 2020 13:54:39 GMT+0800 (Singapore Standard Time) 
-⠧ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UserPoolClientLogPolicy AWS::IAM::Policy Fri Jun 19 2020 13:54:45 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClientLogPolicy AWS::IAM::Policy Fri Jun 19 2020 13:54:43 GMT+0800 (Singapore Standard Time)                            
-⠋ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientLogPolicy AWS::IAM::Policy Fri Jun 19 2020 13:55:04 GMT+0800 (Singapore Standard Time) 
-⠦ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UserPoolClientInputs Custom::LambdaCallout Fri Jun 19 2020 13:55:11 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UserPoolClientInputs Custom::LambdaCallout Fri Jun 19 2020 13:55:07 GMT+0800 (Singapore Standard Time)                            
-⠋ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE UserPoolClientInputs Custom::LambdaCallout Fri Jun 19 2020 13:55:11 GMT+0800 (Singapore Standard Time) 
-⠋ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS IdentityPool AWS::Cognito::IdentityPool Fri Jun 19 2020 13:55:14 GMT+0800 (Singapore Standard Time) 
-⠙ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS IdentityPoolRoleMap AWS::Cognito::IdentityPoolRoleAttachment Fri Jun 19 2020 13:55:20 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE    IdentityPool        AWS::Cognito::IdentityPool               Fri Jun 19 2020 13:55:17 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS IdentityPool        AWS::Cognito::IdentityPool               Fri Jun 19 2020 13:55:16 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-⠙ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE    amplify-myapp-dev-133155-authmyapp9099242c-4SAP2CL40I8D AWS::CloudFormation::Stack               Fri Jun 19 2020 13:55:24 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE    IdentityPoolRoleMap                                     AWS::Cognito::IdentityPoolRoleAttachment Fri Jun 19 2020 13:55:22 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS IdentityPoolRoleMap                                     AWS::Cognito::IdentityPoolRoleAttachment Fri Jun 19 2020 13:55:21 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-⠋ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_COMPLETE    UpdateRolesWithIDPFunction AWS::Lambda::Function      Fri Jun 19 2020 13:55:49 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS UpdateRolesWithIDPFunction AWS::Lambda::Function      Fri Jun 19 2020 13:55:49 GMT+0800 (Singapore Standard Time) Resource creation Initiated
-CREATE_IN_PROGRESS UpdateRolesWithIDPFunction AWS::Lambda::Function      Fri Jun 19 2020 13:55:49 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE    authmyapp9099242c          AWS::CloudFormation::Stack Fri Jun 19 2020 13:55:46 GMT+0800 (Singapore Standard Time)                            
-⠹ Updating resources in the cloud. This may take a few minutes...
-
-CREATE_IN_PROGRESS UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout Fri Jun 19 2020 13:55:51 GMT+0800 (Singapore Standard Time) 
-⠸ Updating resources in the cloud. This may take a few minutes...
-
-UPDATE_COMPLETE                     amplify-myapp-dev-133155          AWS::CloudFormation::Stack Fri Jun 19 2020 13:56:00 GMT+0800 (Singapore Standard Time)                            
-UPDATE_COMPLETE_CLEANUP_IN_PROGRESS amplify-myapp-dev-133155          AWS::CloudFormation::Stack Fri Jun 19 2020 13:55:59 GMT+0800 (Singapore Standard Time)                            
-CREATE_COMPLETE                     UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout      Fri Jun 19 2020 13:55:56 GMT+0800 (Singapore Standard Time)                            
-CREATE_IN_PROGRESS                  UpdateRolesWithIDPFunctionOutputs Custom::LambdaCallout      Fri Jun 19 2020 13:55:56 GMT+0800 (Singapore Standard Time) Resource creation Initiated
+UPDATE_COMPLETE                     amplify-myprojectamplifydemo-dev-172354 AWS::CloudFormation::Stack Mon Dec 07 2020 14:46:11 GMT+0800 (Singapore Standard Time) 
+UPDATE_COMPLETE_CLEANUP_IN_PROGRESS amplify-myprojectamplifydemo-dev-172354 AWS::CloudFormation::Stack Mon Dec 07 2020 14:46:10 GMT+0800 (Singapore Standard Time) 
 ✔ All resources are updated in the cloud
 ```
 
