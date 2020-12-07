@@ -322,20 +322,21 @@ UPDATE_COMPLETE_CLEANUP_IN_PROGRESS amplify-myprojectamplifydemo-dev-172354 AWS:
 ### Step 5: Add Amplify and Amplify-React libraries to the ReactJS App
 ```
 $ yarn add aws-amplify aws-amplify-react
+$ yarn add aws-amplify @aws-amplify/ui-react
 ```
 
 ### Step 6: Edit ./src/App.js
 ```
 ...
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
-import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+import { withAuthenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui/dist/style.css';
 
-Amplify.configure(awsconfig);
+Amplify.configure(awsExports);
 ...
 
-export default withAuthenticator(App, true);
+export default withAuthenticator(App)
 ```
 
 ### Step 7: Test
